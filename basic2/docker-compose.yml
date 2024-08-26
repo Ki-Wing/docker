@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  mydb:
+    image: mariadb
+    environment:
+      - MARIADB_ROOT_PASSWORD=1234
+      - MARIADB_DATABASE=board
+    ports:
+      - "3400:3306"
+  spring_test:
+    build:
+      context: ./demo
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8080"
+    depends_on:
+#      mydb실행까지 spring_test 실행 x
+      - mydb
+    restart: on-failure:10
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mariadb://mydb:3306/board
