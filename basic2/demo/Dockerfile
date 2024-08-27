@@ -30,4 +30,10 @@ ENTRYPOINT ["java", "-jar", "app.jar"]
 #    yml파일 바꾸는대신 실행하는 시점에서 변경 // yml 위치 말함.
 #docker run -d -p 8081:8080 -e SPRING_DATASOURCE_URL=jdbc:mariadb://host.docker.internal:3306/board spring_test:latest
 
+#docker컨테이너 실행 시에 볼륨을 설정할 때에는 -v 옵션 사용
+#docker run -d -p 8081:8080 -e SPRING_DATASOURCE_URL=jdbc:mariadb://host.docker.internal:3306/board -v C:\Users\Playdata\Desktop\tmp_logs:/app/logs spring_test:latest
+
+
+
+
 
